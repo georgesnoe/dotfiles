@@ -13,10 +13,10 @@ normal = { family = "Maple Mono NF", style = "W500" }
 italic = { family = "Maple Mono NF", style = "W500" }
 bold = { family = "Maple Mono NF", style = "W500" }
 bold_italic = { family = "Maple Mono NF", style = "W500" }
-size = 11.1
+size = 11
 hinting = "none"
 edging = "antialias"
 
 [box-drawing]
-mode = "font-glyph"
+mode = "native"
 
