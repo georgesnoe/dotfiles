@@ -56,6 +56,9 @@ ln -s ~/dotfiles/nvim ~/.config/nvim
 
 # Example: Symlinking Neovide config
 ln -s ~/dotfiles/neovide ~/.config/neovide
+
+# Example: Symlinking sqlfluff config
+ln -s ~/dotfiles/sqlfluff ~/.config/sqlfluff
 ```
 
 ## 🔮 Future Additions
