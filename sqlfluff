@@ -1,0 +1,6 @@
+[sqlfluff]
+# Supported dialects https://docs.sqlfluff.com/en/stable/perma/dialects.html
+# Or run 'sqlfluff dialects'
+# One of [postgres|mysql|mariadb|sqlite|snowflake|bigquery|athena|redshift|databricks]
+dialect = postgres
+
