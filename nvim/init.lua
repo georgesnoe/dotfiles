@@ -248,7 +248,10 @@ require("codecompanion").setup({
         },
       },
       ["figma"] = {
-        cmd = { "npx", "-y", "figma-developer-mcp", "--figma-api-key=YOUR-KEY", "--stdio" },
+        cmd = { "npx", "-y", "figma-developer-mcp", "--figma-api-key", "FIGMA_MCP_PAT", "--stdio" },
+        env = {
+          FIGMA_MCP_PAT = "FIGMA_MCP_PAT",
+        },
       },
     },
   },
