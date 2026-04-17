@@ -59,6 +59,9 @@ ln -s ~/dotfiles/neovide ~/.config/neovide
 
 # Example: Symlinking sqlfluff config
 ln -s ~/dotfiles/sqlfluff ~/.config/sqlfluff
+
+# Example: Symlinking fonts
+ln -s ~/dotfiles/fonts/ ~/.local/share/fonts
 ```
 
 ## 🔮 Future Additions
