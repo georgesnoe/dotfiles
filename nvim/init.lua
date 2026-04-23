@@ -110,11 +110,21 @@ require("blink-cmp").setup({
 })
 
 require("codecompanion").setup({
+  rules = {
+    default = {
+      description = "Collection of common files for all projects",
+      files = {
+        "CLAUDE.md",
+        "AGENTS.md",
+        "DESIGN.md",
+      },
+    },
+  },
   interactions = {
     inline = {
       adapter = {
         name = "gemini",
-        model = "gemma-3-4b-it",
+        model = "gemma-4-26b-a4b-it",
       },
     },
     chat = {
@@ -126,22 +136,22 @@ require("codecompanion").setup({
     cmd = {
       adapter = {
         name = "gemini",
-        model = "gemma-3-4b-it",
+        model = "gemma-4-26b-a4b-it",
       },
     },
     backgrounds = {
       adapter = {
         name = "gemini",
-        model = "gemma-3-4b-it",
+        model = "gemini-3.1-flash-lite-preview",
       },
     },
     cli = {
-      agent = "claude_code",
+      agent = "opencode",
       agents = {
-        claude_code = {
-          cmd = "claude",
+        opencode = {
+          cmd = "opencode",
           args = {},
-          description = "Claude Code CLI",
+          description = "OpenCode",
           provider = "terminal",
         },
       },
@@ -161,17 +171,13 @@ require("codecompanion").setup({
   },
   adapters = {
     acp = {
-      gemini_cli = function()
-        return require("codecompanion.adapters").extend("gemini_cli", {
+      opencode = function()
+        return require("codecompanion.adapters").extend("opencode", {
           commands = {
             default = {
-              "gemini",
-              "--acp",
+              "opencode",
+              "acp",
             },
-          },
-          defaults = {
-            auth_method = "oauth-personal",
-            timeout = 600000,
           },
         })
       end,
@@ -197,10 +203,6 @@ require("codecompanion").setup({
                 ["gemma-4-26b-a4b-it"] = {
                   formatted_name = "Gemma 4 26B (MoE)",
                   opts = { can_reason = true, has_vision = true },
-                },
-                ["gemma-3-4b-it"] = {
-                  formatted_name = "Gemma 3 4B",
-                  opts = { can_reason = false, has_vision = false },
                 },
               },
             },
@@ -301,524 +303,7 @@ require("neo-tree").setup({
 require("render-markdown").setup({
   enabled = true,
   render_modes = { "n", "c", "t" },
-  max_file_size = 10.0,
-  debounce = 100,
-  preset = "none",
-  log_level = "off",
-  log_runtime = false,
   file_types = { "markdown", "codecompanion" },
-  ignore = function()
-    return false
-  end,
-  nested = true,
-  change_events = {},
-  restart_highlighter = false,
-  injections = {
-    gitcommit = {
-      enabled = true,
-      query = [[
-                ((message) @injection.content
-                    (#set! injection.combined)
-                    (#set! injection.include-children)
-                    (#set! injection.language "markdown"))
-            ]],
-    },
-  },
-  patterns = {
-    markdown = {
-      disable = true,
-      directives = {
-        { id = 17, name = "conceal_lines" },
-        { id = 18, name = "conceal_lines" },
-      },
-    },
-  },
-  anti_conceal = {
-    enabled = true,
-    disabled_modes = false,
-    above = 0,
-    below = 0,
-    ignore = {
-      bullet = true,
-      callout = true,
-      check_icon = true,
-      check_scope = true,
-      code_background = true,
-      code_border = true,
-      code_language = true,
-      dash = true,
-      head_background = true,
-      head_border = true,
-      head_icon = true,
-      indent = true,
-      link = true,
-      quote = true,
-      sign = true,
-      table_border = true,
-      virtual_lines = true,
-    },
-  },
-  padding = {
-    highlight = "Normal",
-  },
-  latex = {
-    enabled = true,
-    render_modes = false,
-    converter = { "utftex", "latex2text" },
-    highlight = "RenderMarkdownMath",
-    position = "center",
-    top_pad = 0,
-    bottom_pad = 0,
-  },
-  on = {
-    attach = function() end,
-    initial = function() end,
-    render = function() end,
-    clear = function() end,
-  },
-  completions = {
-    blink = { enabled = true },
-    coq = { enabled = false },
-    lsp = { enabled = true },
-    filter = {
-      callout = function()
-        return true
-      end,
-      checkbox = function()
-        return true
-      end,
-    },
-  },
-  heading = {
-    enabled = true,
-    render_modes = false,
-    atx = true,
-    setext = true,
-    sign = true,
-    icons = { "󰲡 ", "󰲣 ", "󰲥 ", "󰲧 ", "󰲩 ", "󰲫 " },
-    position = "overlay",
-    signs = { "󰫎 " },
-    width = "full",
-    left_margin = 0,
-    left_pad = 0,
-    right_pad = 0,
-    min_width = 0,
-    border = false,
-    border_virtual = false,
-    border_prefix = false,
-    above = "▄",
-    below = "▀",
-    backgrounds = {
-      "RenderMarkdownH1Bg",
-      "RenderMarkdownH2Bg",
-      "RenderMarkdownH3Bg",
-      "RenderMarkdownH4Bg",
-      "RenderMarkdownH5Bg",
-      "RenderMarkdownH6Bg",
-    },
-    foregrounds = {
-      "RenderMarkdownH1",
-      "RenderMarkdownH2",
-      "RenderMarkdownH3",
-      "RenderMarkdownH4",
-      "RenderMarkdownH5",
-      "RenderMarkdownH6",
-    },
-    custom = {},
-  },
-  paragraph = {
-    enabled = true,
-    render_modes = false,
-    left_margin = 0,
-    indent = 0,
-    min_width = 0,
-  },
-  code = {
-    enabled = true,
-    render_modes = false,
-    sign = true,
-    conceal_delimiters = true,
-    language = true,
-    position = "right",
-    language_icon = true,
-    language_name = true,
-    language_info = true,
-    language_pad = 0,
-    disable_background = { "diff" },
-    width = "full",
-    left_margin = 0,
-    left_pad = 0,
-    right_pad = 0,
-    min_width = 0,
-    border = "thick",
-    language_border = "█",
-    language_left = "",
-    language_right = "",
-    above = "▄",
-    below = "▀",
-    inline = true,
-    inline_left = "",
-    inline_right = "",
-    inline_pad = 0,
-    highlight = "RenderMarkdownCode",
-    highlight_info = "RenderMarkdownCodeInfo",
-    highlight_language = nil,
-    highlight_border = "RenderMarkdownCodeBorder",
-    highlight_fallback = "RenderMarkdownCodeFallback",
-    highlight_inline = "RenderMarkdownCodeInline",
-    style = "full",
-  },
-  dash = {
-    enabled = true,
-    render_modes = false,
-    icon = "─",
-    width = "full",
-    left_margin = 0,
-    highlight = "RenderMarkdownDash",
-  },
-  document = {
-    enabled = true,
-    render_modes = false,
-    conceal = {
-      char_patterns = {},
-      line_patterns = {},
-    },
-  },
-  bullet = {
-    enabled = true,
-    render_modes = false,
-    icons = { "●", "○", "◆", "◇" },
-    ordered_icons = function(ctx)
-      local value = vim.trim(ctx.value)
-      local index = tonumber(value:sub(1, #value - 1))
-      return ("%d."):format(index > 1 and index or ctx.index)
-    end,
-    left_pad = 0,
-    right_pad = 0,
-    highlight = "RenderMarkdownBullet",
-    scope_highlight = {},
-    scope_priority = nil,
-  },
-  checkbox = {
-    enabled = true,
-    render_modes = false,
-    bullet = false,
-    left_pad = 0,
-    right_pad = 1,
-    unchecked = {
-      icon = "󰄱 ",
-      highlight = "RenderMarkdownUnchecked",
-      scope_highlight = nil,
-    },
-    checked = {
-      icon = "󰱒 ",
-      highlight = "RenderMarkdownChecked",
-      scope_highlight = nil,
-    },
-    custom = {
-      todo = { raw = "[-]", rendered = "󰥔 ", highlight = "RenderMarkdownTodo", scope_highlight = nil },
-    },
-    scope_priority = nil,
-  },
-  quote = {
-    enabled = true,
-    render_modes = false,
-    icon = "▋",
-    repeat_linebreak = false,
-    highlight = {
-      "RenderMarkdownQuote1",
-      "RenderMarkdownQuote2",
-      "RenderMarkdownQuote3",
-      "RenderMarkdownQuote4",
-      "RenderMarkdownQuote5",
-      "RenderMarkdownQuote6",
-    },
-  },
-  pipe_table = {
-    enabled = true,
-    render_modes = false,
-    preset = "none",
-    cell = "padded",
-    cell_offset = function()
-      return 0
-    end,
-    padding = 1,
-    min_width = 0,
-    border = {
-      "┌",
-      "┬",
-      "┐",
-      "├",
-      "┼",
-      "┤",
-      "└",
-      "┴",
-      "┘",
-      "│",
-      "─",
-    },
-    border_enabled = true,
-    border_virtual = false,
-    alignment_indicator = "━",
-    head = "RenderMarkdownTableHead",
-    row = "RenderMarkdownTableRow",
-    filler = "RenderMarkdownTableFill",
-    style = "full",
-  },
-  callout = {
-    note = {
-      raw = "[!NOTE]",
-      rendered = "󰋽 Note",
-      highlight = "RenderMarkdownInfo",
-      category = "github",
-    },
-    tip = {
-      raw = "[!TIP]",
-      rendered = "󰌶 Tip",
-      highlight = "RenderMarkdownSuccess",
-      category = "github",
-    },
-    important = {
-      raw = "[!IMPORTANT]",
-      rendered = "󰅾 Important",
-      highlight = "RenderMarkdownHint",
-      category = "github",
-    },
-    warning = {
-      raw = "[!WARNING]",
-      rendered = "󰀪 Warning",
-      highlight = "RenderMarkdownWarn",
-      category = "github",
-    },
-    caution = {
-      raw = "[!CAUTION]",
-      rendered = "󰳦 Caution",
-      highlight = "RenderMarkdownError",
-      category = "github",
-    },
-    abstract = {
-      raw = "[!ABSTRACT]",
-      rendered = "󰨸 Abstract",
-      highlight = "RenderMarkdownInfo",
-      category = "obsidian",
-    },
-    summary = {
-      raw = "[!SUMMARY]",
-      rendered = "󰨸 Summary",
-      highlight = "RenderMarkdownInfo",
-      category = "obsidian",
-    },
-    tldr = {
-      raw = "[!TLDR]",
-      rendered = "󰨸 Tldr",
-      highlight = "RenderMarkdownInfo",
-      category = "obsidian",
-    },
-    info = {
-      raw = "[!INFO]",
-      rendered = "󰋽 Info",
-      highlight = "RenderMarkdownInfo",
-      category = "obsidian",
-    },
-    todo = {
-      raw = "[!TODO]",
-      rendered = "󰗡 Todo",
-      highlight = "RenderMarkdownInfo",
-      category = "obsidian",
-    },
-    hint = {
-      raw = "[!HINT]",
-      rendered = "󰌶 Hint",
-      highlight = "RenderMarkdownSuccess",
-      category = "obsidian",
-    },
-    success = {
-      raw = "[!SUCCESS]",
-      rendered = "󰄬 Success",
-      highlight = "RenderMarkdownSuccess",
-      category = "obsidian",
-    },
-    check = {
-      raw = "[!CHECK]",
-      rendered = "󰄬 Check",
-      highlight = "RenderMarkdownSuccess",
-      category = "obsidian",
-    },
-    done = {
-      raw = "[!DONE]",
-      rendered = "󰄬 Done",
-      highlight = "RenderMarkdownSuccess",
-      category = "obsidian",
-    },
-    question = {
-      raw = "[!QUESTION]",
-      rendered = "󰘥 Question",
-      highlight = "RenderMarkdownWarn",
-      category = "obsidian",
-    },
-    help = {
-      raw = "[!HELP]",
-      rendered = "󰘥 Help",
-      highlight = "RenderMarkdownWarn",
-      category = "obsidian",
-    },
-    faq = {
-      raw = "[!FAQ]",
-      rendered = "󰘥 Faq",
-      highlight = "RenderMarkdownWarn",
-      category = "obsidian",
-    },
-    attention = {
-      raw = "[!ATTENTION]",
-      rendered = "󰀪 Attention",
-      highlight = "RenderMarkdownWarn",
-      category = "obsidian",
-    },
-    failure = {
-      raw = "[!FAILURE]",
-      rendered = "󰅖 Failure",
-      highlight = "RenderMarkdownError",
-      category = "obsidian",
-    },
-    fail = {
-      raw = "[!FAIL]",
-      rendered = "󰅖 Fail",
-      highlight = "RenderMarkdownError",
-      category = "obsidian",
-    },
-    missing = {
-      raw = "[!MISSING]",
-      rendered = "󰅖 Missing",
-      highlight = "RenderMarkdownError",
-      category = "obsidian",
-    },
-    danger = {
-      raw = "[!DANGER]",
-      rendered = "󱐌 Danger",
-      highlight = "RenderMarkdownError",
-      category = "obsidian",
-    },
-    error = {
-      raw = "[!ERROR]",
-      rendered = "󱐌 Error",
-      highlight = "RenderMarkdownError",
-      category = "obsidian",
-    },
-    bug = {
-      raw = "[!BUG]",
-      rendered = "󰨰 Bug",
-      highlight = "RenderMarkdownError",
-      category = "obsidian",
-    },
-    example = {
-      raw = "[!EXAMPLE]",
-      rendered = "󰉹 Example",
-      highlight = "RenderMarkdownHint",
-      category = "obsidian",
-    },
-    quote = {
-      raw = "[!QUOTE]",
-      rendered = "󱆨 Quote",
-      highlight = "RenderMarkdownQuote",
-      category = "obsidian",
-    },
-    cite = {
-      raw = "[!CITE]",
-      rendered = "󱆨 Cite",
-      highlight = "RenderMarkdownQuote",
-      category = "obsidian",
-    },
-  },
-  link = {
-    enabled = true,
-    render_modes = false,
-    footnote = {
-      enabled = true,
-      icon = "󰯔 ",
-      superscript = true,
-      prefix = "",
-      suffix = "",
-    },
-    image = "󰥶 ",
-    email = "󰀓 ",
-    hyperlink = "󰌹 ",
-    highlight = "RenderMarkdownLink",
-    wiki = {
-      icon = "󱗖 ",
-      body = function()
-        return nil
-      end,
-      highlight = "RenderMarkdownWikiLink",
-      scope_highlight = nil,
-    },
-    custom = {
-      web = { pattern = "^http", icon = "󰖟 " },
-      discord = { pattern = "discord%.com", icon = "󰙯 " },
-      github = { pattern = "github%.com", icon = "󰊤 " },
-      gitlab = { pattern = "gitlab%.com", icon = "󰮠 " },
-      google = { pattern = "google%.com", icon = "󰊭 " },
-      neovim = { pattern = "neovim%.io", icon = " " },
-      reddit = { pattern = "reddit%.com", icon = "󰑍 " },
-      stackoverflow = { pattern = "stackoverflow%.com", icon = "󰓌 " },
-      wikipedia = { pattern = "wikipedia%.org", icon = "󰖬 " },
-      youtube = { pattern = "youtube%.com", icon = "󰗃 " },
-    },
-  },
-  sign = {
-    enabled = true,
-    highlight = "RenderMarkdownSign",
-  },
-  inline_highlight = {
-    enabled = true,
-    render_modes = false,
-    highlight = "RenderMarkdownInlineHighlight",
-  },
-  indent = {
-    enabled = false,
-    render_modes = false,
-    per_level = 2,
-    skip_level = 1,
-    skip_heading = false,
-    icon = "▎",
-    priority = 0,
-    highlight = "RenderMarkdownIndent",
-  },
-  html = {
-    enabled = true,
-    render_modes = false,
-    comment = {
-      conceal = true,
-      text = nil,
-      highlight = "RenderMarkdownHtmlComment",
-    },
-    tag = {},
-  },
-  win_options = {
-    conceallevel = {
-      default = vim.o.conceallevel,
-      rendered = 3,
-    },
-    concealcursor = {
-      default = vim.o.concealcursor,
-      rendered = "",
-    },
-  },
-  overrides = {
-    buflisted = {},
-    buftype = {
-      nofile = {
-        render_modes = true,
-        padding = { highlight = "NormalFloat" },
-        sign = { enabled = false },
-      },
-    },
-    filetype = {},
-  },
-  custom_handlers = {},
-  yaml = {
-    enabled = true,
-    render_modes = false,
-  },
 })
 
 local highlight = {
