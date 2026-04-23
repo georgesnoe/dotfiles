@@ -30,6 +30,11 @@ return {
     keys = {
       { "cc", "<cmd>CodeCompanionChat Toggle<CR>", desc = "Toggle CodeCompanion" },
       { "ca", "<cmd>CodeCompanionActions<CR>", desc = "CodeCompanion Actions" },
+      {
+        "oc",
+        "<cmd>CodeCompanionCLI agent=opencode<CR>",
+        desc = "Toggle OpenCode",
+      },
     },
   },
 
