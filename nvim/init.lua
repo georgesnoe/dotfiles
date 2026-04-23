@@ -89,11 +89,7 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 })
 
 require("blink-cmp").setup({
-  sources = {
-    per_filetype = {
-      codecompanion = { "codecompanion" },
-    },
-  },
+  sources = {},
   signature = {
     enabled = true,
   },
@@ -104,156 +100,6 @@ require("blink-cmp").setup({
         enabled = function()
           return true
         end,
-      },
-    },
-  },
-})
-
-require("codecompanion").setup({
-  rules = {
-    default = {
-      description = "Collection of common files for all projects",
-      files = {
-        "CLAUDE.md",
-        "AGENTS.md",
-        "DESIGN.md",
-      },
-    },
-  },
-  interactions = {
-    inline = {
-      adapter = {
-        name = "gemini",
-        model = "gemma-4-26b-a4b-it",
-      },
-    },
-    chat = {
-      adapter = {
-        name = "gemini",
-        model = "gemma-4-31b-it",
-      },
-    },
-    cmd = {
-      adapter = {
-        name = "gemini",
-        model = "gemma-4-26b-a4b-it",
-      },
-    },
-    backgrounds = {
-      adapter = {
-        name = "gemini",
-        model = "gemini-3.1-flash-lite-preview",
-      },
-    },
-    cli = {
-      agent = "opencode",
-      agents = {
-        opencode = {
-          cmd = "opencode",
-          args = {},
-          description = "OpenCode",
-          provider = "terminal",
-        },
-      },
-    },
-  },
-  display = {
-    inline = {
-      layout = "vertical",
-    },
-  },
-  memory = {
-    opts = {
-      chat = {
-        enabled = true,
-      },
-    },
-  },
-  adapters = {
-    acp = {
-      opencode = function()
-        return require("codecompanion.adapters").extend("opencode", {
-          commands = {
-            default = {
-              "opencode",
-              "acp",
-            },
-          },
-        })
-      end,
-    },
-    http = {
-      gemini = function()
-        return require("codecompanion.adapters").extend("gemini", {
-          env = {
-            GEMINI_API_KEY = "GEMINI_API_KEY",
-          },
-          schema = {
-            model = {
-              default = "gemma-4-31b-it",
-              choices = {
-                ["gemini-3.1-flash-lite-preview"] = {
-                  formatted_name = "Gemini 3.1 Flash Lite",
-                  opts = { can_reason = true, has_vision = true },
-                },
-                ["gemma-4-31b-it"] = {
-                  formatted_name = "Gemma 4 31B (Dense)",
-                  opts = { can_reason = true, has_vision = true },
-                },
-                ["gemma-4-26b-a4b-it"] = {
-                  formatted_name = "Gemma 4 26B (MoE)",
-                  opts = { can_reason = true, has_vision = true },
-                },
-              },
-            },
-          },
-        })
-      end,
-    },
-  },
-  mcp = {
-    servers = {
-      ["github"] = {
-        cmd = {
-          "docker",
-          "run",
-          "-i",
-          "--rm",
-          "-e",
-          "GITHUB_PERSONAL_ACCESS_TOKEN",
-          "ghcr.io/github/github-mcp-server",
-        },
-        env = {
-          GITHUB_PERSONAL_ACCESS_TOKEN = "GITHUB_PERSONAL_ACCESS_TOKEN",
-        },
-      },
-      ["notion"] = {
-        cmd = {
-          "docker",
-          "run",
-          "-i",
-          "--rm",
-          "-e",
-          "NOTION_TOKEN",
-          "mcp/notion",
-        },
-        env = {
-          NOTION_TOKEN = "NOTION_TOKEN",
-        },
-      },
-      ["playwright"] = {
-        cmd = { "npx", "-y", "@playwright/mcp@latest" },
-        env = {
-          PLAYWRIGHT_MCP_BROWSER = "firefox",
-          PLAYWRIGHT_MCP_HEADLESS = "0",
-          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD = "0",
-        },
-      },
-      ["figma"] = {
-        cmd = { "npx", "-y", "figma-developer-mcp", "--figma-api-key", "FIGMA_MCP_PAT", "--stdio" },
-        env = {
-          FIGMA_MCP_PAT = "FIGMA_MCP_PAT",
-        },
       },
     },
   },
@@ -303,7 +149,7 @@ require("neo-tree").setup({
 require("render-markdown").setup({
   enabled = true,
   render_modes = { "n", "c", "t" },
-  file_types = { "markdown", "codecompanion" },
+  file_types = { "markdown" },
 })
 
 local highlight = {
