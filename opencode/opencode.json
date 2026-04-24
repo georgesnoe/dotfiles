@@ -27,6 +27,18 @@
       "url": "https://mcp.notion.com/mcp",
       "timeout": 30000,
       "enabled": false
+    },
+    "figma": {
+      "type": "remote",
+      "url": "https://mcp.figma.com/mcp",
+      "timeout": 30000,
+      "enabled": false
+    },
+    "canva": {
+      "type": "remote",
+      "url": "https://mcp.canva.com/mcp",
+      "timeout": 30000,
+      "enabled": false
     }
   },
   "default_agent": "plan",
