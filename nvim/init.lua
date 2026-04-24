@@ -146,12 +146,6 @@ require("neo-tree").setup({
   },
 })
 
-require("render-markdown").setup({
-  enabled = true,
-  render_modes = { "n", "c", "t" },
-  file_types = { "markdown" },
-})
-
 local highlight = {
   "RainbowRed",
   "RainbowYellow",
