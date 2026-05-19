@@ -75,7 +75,7 @@ I plan to expand this repository to include:
 - [ ] **Tmux**: Terminal multiplexer setup for better session management.
 - [ ] **Git**: Global `.gitconfig` for consistent commit styles.
 - [x] **Terminal**: Configurations for Starship.
-- [ ] **Energy Management**: Configurations for tlp on Fedora
+- [x] **Energy Management**: Configurations for tlp on Fedora
 
 ## 📜 License
 
