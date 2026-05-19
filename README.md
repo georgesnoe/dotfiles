@@ -74,7 +74,8 @@ I plan to expand this repository to include:
 - [ ] **Zsh/Bash**: Shell configurations and aliases.
 - [ ] **Tmux**: Terminal multiplexer setup for better session management.
 - [ ] **Git**: Global `.gitconfig` for consistent commit styles.
-- [ ] **Terminal**: Configurations for Kitty or Alacritty.
+- [x] **Terminal**: Configurations for Starship.
+- [ ] **Energy Management**: Configurations for tlp on Fedora
 
 ## 📜 License
 
