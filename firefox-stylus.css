@@ -1,0 +1,23 @@
+*, body, #notion-app, [contenteditable="true"] {
+    font-family: "VotrePolice", sans-serif !important;
+}
+
+code, pre, kbd, samp,
+code *, pre *, .code-block *,
+.blob-code, .blob-code *, 
+.blob-code-content, .blob-num,
+.react-code-container, .react-code-container *,
+[class*="code-"], [class*="code-"] *,
+[class*="hljs"], [class*="hljs"] *,
+.markdown-body pre, .markdown-body code {
+    font-family: monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace !important;
+}
+
+svg, svg *, 
+i, i *,
+.notion-record-icon, 
+[class*="icon"], 
+.notion-emoji,
+[style*="font-family: Apple Color Emoji"] {
+    font-family: revert !important;
+}
