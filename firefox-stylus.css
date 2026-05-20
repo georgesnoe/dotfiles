@@ -21,3 +21,51 @@ i, i *,
 [style*="font-family: Apple Color Emoji"] {
     font-family: revert !important;
 }
+
+@-moz-document domain("telegram.org") {
+    body:not(.web_page) #notion-app,
+[contenteditable="true"],
+*:not(i):not(svg):not([class*="icon"]):not([class*="tgico"]):not([class*="icon-"]) {
+    font-family: sans-serif !important;
+}
+
+code,
+pre,
+kbd,
+samp,
+code *,
+pre *,
+.code-block *,
+.blob-code,
+.blob-code *,
+.blob-code-content,
+.blob-num,
+.react-code-container,
+.react-code-container *,
+[class*="code-"],
+[class*="code-"] *,
+[class*="hljs"],
+[class*="hljs"] *,
+.markdown-body pre,
+.markdown-body code {
+    font-family: monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace !important;
+}
+
+svg,
+svg *,
+i,
+i *,
+i::before,
+[class*="icon"],
+[class*="icon"] *,
+[class*="icon"] *::before,
+[class*="tgico"],
+[class*="tgico"] *,
+[class*="tgico"] *::before,
+.notion-record-icon,
+.notion-emoji,
+[style*="font-family: Apple Color Emoji"],
+.peer-title * {
+    font-family: inherit, TelegramIcon, tgicon !important;
+}
+}
