@@ -1,3 +1,4 @@
+@-moz-document domain("whatsapp.com"), domain("notion.so"), domain("github.com"), domain("chatgpt.com"), domain("youtube.com"), domain("cron-job.org") {
 *, body, #notion-app, [contenteditable="true"] {
     font-family: "VotrePolice", sans-serif !important;
 }
@@ -21,11 +22,12 @@ i, i *,
 [style*="font-family: Apple Color Emoji"] {
     font-family: revert !important;
 }
+}
 
-@-moz-document domain("telegram.org") {
-    body:not(.web_page) #notion-app,
+@-moz-document domain("telegram.org"), domain("dbdiagram.io") {
+body:not(.web_page) #notion-app,
 [contenteditable="true"],
-*:not(i):not(svg):not([class*="icon"]):not([class*="tgico"]):not([class*="icon-"]) {
+*:not(i):not(svg):not([class*="icon"]):not([class*="tgico"]):not([class*="icon-"]):not(.view-line span) {
     font-family: sans-serif !important;
 }
 
@@ -46,6 +48,7 @@ pre *,
 [class*="code-"] *,
 [class*="hljs"],
 [class*="hljs"] *,
+.view-line span span,
 .markdown-body pre,
 .markdown-body code {
     font-family: monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace !important;
