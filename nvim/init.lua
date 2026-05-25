@@ -105,47 +105,6 @@ require("blink-cmp").setup({
   },
 })
 
-require("neo-tree").setup({
-  sources = {
-    "filesystem",
-    "buffers",
-    "git_status",
-    "document_symbols",
-  },
-  filesystem = {
-    group_empty_dirs = false,
-    filtered_items = {
-      hide_dotfiles = false,
-      hide_hidden = false,
-      hide_gitignored = false,
-      hide_ignored = false,
-      visible = true,
-    },
-  },
-  source_selector = {
-    winbar = true,
-    statusline = true,
-    sources = {
-      { source = "filesystem" },
-      { source = "buffers" },
-      { source = "git_status" },
-      { source = "document_symbols" },
-    },
-    truncation_character = "…",
-  },
-  window = {
-    mappings = {
-      ["P"] = {
-        "toggle_preview",
-        config = {
-          use_float = true,
-          use_image_nvim = true,
-        },
-      },
-    },
-  },
-})
-
 local highlight = {
   "RainbowRed",
   "RainbowYellow",
