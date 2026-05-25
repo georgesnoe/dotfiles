@@ -1,46 +1,5 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "mcp": {
-    "github": {
-      "type": "remote",
-      "url": "https://api.githubcopilot.com/mcp/",
-      "headers": {
-        "Authorization": "Bearer {env:GITHUB_PERSONAL_ACCESS_TOKEN}"
-      },
-      "oauth": false,
-      "timeout": 30000,
-      "enabled": false
-    },
-    "playwright": {
-      "type": "local",
-      "command": ["npx", "-y", "@playwright/mcp@latest"],
-      "timeout": 30000,
-      "enabled": false,
-      "environment": {
-        "PLAYWRIGHT_MCP_BROWSER": "firefox",
-        "PLAYWRIGHT_MCP_HEADLESS": "0",
-        "PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD": "0"
-      }
-    },
-    "notion": {
-      "type": "remote",
-      "url": "https://mcp.notion.com/mcp",
-      "timeout": 30000,
-      "enabled": false
-    },
-    "figma": {
-      "type": "remote",
-      "url": "https://mcp.figma.com/mcp",
-      "timeout": 30000,
-      "enabled": false
-    },
-    "canva": {
-      "type": "remote",
-      "url": "https://mcp.canva.com/mcp",
-      "timeout": 30000,
-      "enabled": false
-    }
-  },
   "default_agent": "plan",
   "autoupdate": "notify",
   "compaction": {
@@ -62,20 +21,19 @@
       ".output/**"
     ]
   },
-  "instructions": ["CLAUDE.md", "AGENTS.md", "DESIGN.md", "STYLE.md"],
+  "instructions": [
+    "CLAUDE.md",
+    "AGENTS.md",
+    "DESIGN.md",
+    "STYLE.md",
+    "PLAN.md"
+  ],
   "provider": {
-    "google": {
+    "openrouter": {
       "options": {
         "chunkTimeout": 30000,
         "timeout": false,
-        "apiKey": "{env:GEMINI_API_KEY}"
-      }
-    },
-    "groq": {
-      "options": {
-        "chunkTimeout": 30000,
-        "timeout": false,
-        "apiKey": "{env:GROQ_API_KEY}"
+        "apiKey": "{env:OPENROUTER_API_KEY}"
       }
     },
     "ollama-cloud": {
@@ -84,13 +42,9 @@
         "timeout": false,
         "apiKey": "{env:OLLAMA_API_KEY}"
       }
-    },
-    "openrouter": {
-      "options": {
-        "chunkTimeout": 30000,
-        "timeout": false,
-        "apiKey": "{env:OPENROUTER_API_KEY}"
-      }
     }
-  }
+  },
+  "username": "georgesnoe",
+  "model": "openrouter/google/gemma-4-31b-it:free",
+  "small_model": "openrouter/google/gemma-4-26b-a4b-it:free"
 }
