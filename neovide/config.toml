@@ -1,22 +1,22 @@
 fork = true
-frame = "full"
+frame = "none"
 idle = false
 no-multigrid = true
-srgb = false # platform-specific: false (Linux/macOS) or true (Windows)
+srgb = true
 tabs = true
 title-hidden = false
 vsync = true
 maximized = true
+opengl = true
 
 [font]
 normal = { family = "Maple Mono NF", style = "W500" }
 italic = { family = "Maple Mono NF", style = "W500" }
 bold = { family = "Maple Mono NF", style = "W500" }
 bold_italic = { family = "Maple Mono NF", style = "W500" }
-size = 11
+size = 9
 hinting = "none"
 edging = "antialias"
 
 [box-drawing]
 mode = "native"
-
