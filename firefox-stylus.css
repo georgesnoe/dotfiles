@@ -1,6 +1,6 @@
-@-moz-document domain("whatsapp.com"), domain("notion.so"), domain("github.com"), domain("chatgpt.com"), domain("youtube.com"), domain("cron-job.org") {
+@-moz-document domain("whatsapp.com"), domain("notion.so"), domain("github.com"), domain("chatgpt.com"), domain("youtube.com"), domain("cron-job.org"), domain("githubstatus.com") {
 *, body, #notion-app, [contenteditable="true"] {
-    font-family: "VotrePolice", sans-serif !important;
+    font-family: sans-serif !important;
 }
 
 code, pre, kbd, samp,
