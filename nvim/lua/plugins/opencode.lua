@@ -58,9 +58,4 @@ return {
     vim.keymap.set("n", "+", "<C-a>", { desc = "Increment under cursor", noremap = true })
     vim.keymap.set("n", "-", "<C-x>", { desc = "Decrement under cursor", noremap = true })
   end,
-}return {
-  "iamironz/android-nvim-plugin",
-  ft = { "kotlin", "groovy" },
-  --- @module "android"
-  opts = {},
 }
