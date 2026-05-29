@@ -7,6 +7,12 @@
     "prune": true,
     "reserved": 15000
   },
+  "mcp": {
+    "notion": {
+      "type": "remote",
+      "url": "https://mcp.notion.com/mcp"
+    }
+  },
   "watcher": {
     "ignore": [
       ".git/**",
@@ -22,6 +28,7 @@
     ]
   },
   "instructions": [
+    "/home/georgesnoe/.config/opencode/global-rules.md",
     "CLAUDE.md",
     "AGENTS.md",
     "DESIGN.md",
@@ -32,8 +39,7 @@
     "openrouter": {
       "options": {
         "chunkTimeout": 30000,
-        "timeout": false,
-        "apiKey": "{env:OPENROUTER_API_KEY}"
+        "timeout": false
       }
     },
     "ollama-cloud": {
