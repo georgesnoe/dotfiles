@@ -1,0 +1,34 @@
+/* GouvTG */
+*, body, text tspan, [contenteditable="true"] {
+    font-family: "Rubik" !important;
+}
+
+code, pre, kbd, samp,
+code *, pre *, .code-block *,
+.blob-code, .blob-code *, 
+.blob-code-content, .blob-num,
+.react-code-container, .react-code-container *,
+[class*="code-"], [class*="code-"] *,
+[class*="hljs"], [class*="hljs"] *,
+[class*="json"], [class*="json"] *, 
+[data-mode], [data-mode] *,
+.markdown-body pre, .markdown-body code,
+.ace_line {
+    font-family: "Geist Mono", monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace !important;
+}
+
+svg, svg *, 
+i, i *,
+i::before,
+i::after,
+.notion-record-icon, 
+[class*="icon"], 
+.notion-emoji,
+[style*="font-family: Apple Color Emoji"],
+span.fa, .fa {
+    font-family: FontAwesome !important;
+}
+
+.oi, .oi::before, .oi::after {
+    font-family: odoo_ui_icons !important;
+}
