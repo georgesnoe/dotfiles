@@ -138,4 +138,7 @@
   "chat.unifiedAgentsBar.enabled": true,
   "workbench.startupEditor": "none",
   "workbench.experimental.modernUIEditorTabStyle": "pill",
+  "dictation.showButton": false,
+  "agents.voice.showButton": false,
+  "workbench.activityBar.location": "top"
 }
